@@ -3,178 +3,437 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photography | Your Name</title>
+  <meta name="description" content="A photography portfolio featuring landscapes, everyday moments, and fine-art photography by Corban Gibson.">
+  <title>Corban Gibson | Photography</title>
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      background: #f5f3ee;
-      color: #25251f;
-      font-family: Helvetica, Arial, sans-serif;
+      background: #faf9f6;
+      color: #242420;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     header {
-      padding: 28px 7%;
+      padding: 36px 6% 26px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #dedbd3;
+      border-bottom: 1px solid #e8e6e0;
     }
 
     .logo {
-      font-size: 13px;
-      letter-spacing: 3px;
-      font-weight: bold;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      letter-spacing: 1px;
     }
 
     nav a {
-      color: inherit;
+      margin-left: 25px;
+      color: #55554f;
       text-decoration: none;
       font-size: 12px;
-      margin-left: 22px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      color: #99917e;
     }
 
     .intro {
-      padding: 85px 7% 50px;
+      padding: 90px 6% 65px;
+      max-width: 1100px;
+      margin: auto;
     }
 
     .eyebrow {
+      color: #858174;
       font-size: 11px;
       letter-spacing: 3px;
       text-transform: uppercase;
     }
 
     h1 {
-      font-family: Georgia, serif;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 7vw, 82px);
       font-weight: normal;
-      font-size: clamp(42px, 8vw, 92px);
-      line-height: 1.03;
-      letter-spacing: -3px;
+      line-height: 1.08;
+      letter-spacing: -2px;
       margin: 22px 0;
-      max-width: 850px;
     }
 
     .intro p {
-      max-width: 420px;
-      line-height: 1.8;
       color: #68675f;
-      font-size: 14px;
+      max-width: 460px;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .gallery-section {
+      padding: 0 6% 85px;
+    }
+
+    .gallery-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .gallery-heading h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      font-weight: normal;
+    }
+
+    .photo-count {
+      color: #858174;
+      font-size: 12px;
+      letter-spacing: 1px;
     }
 
     .gallery {
-      padding: 10px 7% 80px;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px 18px;
+    }
+
+    .photo {
+      margin: 0;
+      cursor: pointer;
+      overflow: hidden;
+      background: #eeece6;
     }
 
     .photo img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
       display: block;
-      background: #e2dfd6;
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
     }
 
-    .photo:nth-child(3n) img {
-      aspect-ratio: 4 / 3;
+    .photo:hover img {
+      transform: scale(1.035);
     }
 
-    .caption {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding-top: 12px;
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .photo figcaption {
+      padding: 12px 2px 4px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 14px;
+      color: #55554f;
     }
-
-    .number { color: #8c897f; }
 
     .about {
-      padding: 65px 7% 90px;
-      background: #e9e6de;
+      border-top: 1px solid #e8e6e0;
+      padding: 65px 6% 75px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
     }
 
     .about h2 {
-      font-family: Georgia, serif;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
       font-weight: normal;
-      font-size: 42px;
-      margin: 18px 0;
+      font-size: 30px;
     }
 
     .about p {
-      max-width: 500px;
-      color: #55544d;
+      max-width: 550px;
+      margin: 0;
+      color: #68675f;
       line-height: 1.9;
-      font-size: 14px;
+      font-size: 15px;
     }
 
     footer {
-      padding: 28px 7%;
-      font-size: 11px;
-      letter-spacing: 1px;
+      padding: 25px 6%;
+      border-top: 1px solid #e8e6e0;
       display: flex;
       justify-content: space-between;
       gap: 15px;
+      color: #77766e;
+      font-size: 12px;
     }
 
-    @media (max-width: 600px) {
-      header { padding: 22px 5%; }
-      nav a { margin-left: 10px; font-size: 10px; }
-      .intro { padding: 60px 5% 35px; }
-      .gallery { padding: 10px 5% 55px; gap: 22px 10px; }
-      .about { padding: 50px 5%; }
-      .caption { font-size: 9px; }
-      footer { padding: 24px 5%; }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(20, 20, 18, 0.96);
+      padding: 55px 25px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 82vh;
+      object-fit: contain;
+    }
+
+    .lightbox button {
+      position: absolute;
+      border: 0;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-size: 30px;
+      padding: 10px;
+    }
+
+    .close {
+      top: 15px;
+      right: 22px;
+    }
+
+    .previous {
+      left: 12px;
+      top: 50%;
+    }
+
+    .next {
+      right: 12px;
+      top: 50%;
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 18px;
+      color: #ddd;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 800px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .photo img {
+        height: 280px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        padding: 24px 5%;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      nav a {
+        margin-left: 10px;
+        font-size: 10px;
+      }
+
+      .intro {
+        padding: 65px 5% 45px;
+      }
+
+      .gallery-section {
+        padding: 0 5% 55px;
+      }
+
+      .gallery {
+        gap: 20px 12px;
+      }
+
+      .photo img {
+        height: 210px;
+      }
+
+      .photo figcaption {
+        font-size: 12px;
+      }
+
+      footer {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <div class="logo">YOUR NAME / PHOTO</div>
+    <div class="logo">Corban Gibson</div>
     <nav>
-      <a href="#work">WORK</a>
-      <a href="#about">ABOUT</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
     </nav>
   </header>
 
-  <section class="intro">
-    <div class="eyebrow">Photography portfolio · 2026</div>
-    <h1>The world,<br>as I see it.</h1>
-    <p>A collection of places, people, and little moments that make the world worth looking at.</p>
-  </section>
+  <main>
+    <section class="intro">
+      <div class="eyebrow">Photography Portfolio</div>
+      <h1>Finding beauty<br>in the everyday.</h1>
+      <p>
+        A collection of photographs exploring places, people,
+        light, and the little moments worth remembering.
+      </p>
+    </section>
 
-  <main class="gallery" id="work">
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85" alt="Mountain landscape">
-      <div class="caption"><span>Open Landscapes</span><span class="number">01</span></div>
-    </div>
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1200&q=85" alt="City street">
-      <div class="caption"><span>Everyday Places</span><span class="number">02</span></div>
-    </div>
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1200&q=85" alt="Sunrise over a landscape">
-      <div class="caption"><span>First Light</span><span class="number">03</span></div>
-    </div>
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=85" alt="Wildlife in nature">
-      <div class="caption"><span>Wild Places</span><span class="number">04</span></div>
-    </div>
+    <section class="gallery-section" id="work">
+      <div class="gallery-heading">
+        <h2>Selected Work</h2>
+        <span class="photo-count">36 PHOTOGRAPHS</span>
+      </div>
+
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>About My Work</h2>
+      <p>
+        Photography is a way of slowing down and noticing the world
+        around me. Through color, light, and composition, I hope to
+        capture moments and places that might otherwise go unnoticed.
+        This portfolio is a collection of images that reflect the way
+        I see the world.
+      </p>
+    </section>
   </main>
 
-  <section class="about" id="about">
-    <div class="eyebrow">A little about me</div>
-    <h2>Looking a little closer.</h2>
-    <p>I'm a photographer drawn to the details, places, and moments that can be easy to overlook. This portfolio is a collection of the things I see and the way I see them.</p>
-  </section>
-
   <footer>
-    <span>YOUR NAME / PHOTOGRAPHY</span>
-    <span>MADE WITH CURIOSITY</span>
+    <span>© 2026 Corban Gibson</span>
+    <span>Photography Portfolio</span>
   </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog"
+       aria-label="Photo viewer" aria-modal="true">
+    <button class="close" id="close" aria-label="Close photo">&times;</button>
+    <button class="previous" id="previous" aria-label="Previous photo">&#10094;</button>
+    <img id="largePhoto" src="" alt="Expanded photograph">
+    <button class="next" id="next" aria-label="Next photo">&#10095;</button>
+    <div class="lightbox-counter" id="counter"></div>
+  </div>
+
+  <script>
+    const filenames = [
+      "0CF86748-FE41-48B7-9B47-F11CC80AC06D_1_105_c.jpeg",
+      "0E0EC77A-C7FC-400D-9C27-1929E297D09B_1_105_c.jpeg",
+      "1C9B512C-C22C-425B-BB7B-5A8104CF9EE3_1_105_c.jpeg",
+      "1FDB2900-D166-470F-8683-570F0086D9F0_1_105_c.jpeg",
+      "2CEBCA2F-AD94-4C6F-AFAB-3636B1460FCE_1_105_c.jpeg",
+      "3C85AEF8-7A3D-4E6F-A640-3AC1814C5CCB_1_105_c.jpeg",
+      "4CBC65A5-BB41-45B3-9569-A6ADF3BFBAE2_1_105_c.jpeg",
+      "4D40113E-3F4B-4897-BC52-9899C97BF911_1_105_c.jpeg",
+      "4E36FD1A-45A4-4F59-826B-F247A383DB24_1_105_c.jpeg",
+      "5ED2BB79-8DDD-454A-8F8A-3CF04AF97DC5_1_105_c.jpeg",
+      "6A5D253E-D2FE-4CA0-AAD9-4F26BC8E40A9_1_105_c.jpeg",
+      "6AEEF9B1-EF27-411F-A9F8-A2A56C8D5D3E_1_105_c.jpeg",
+      "7A99A13E-6173-4DD8-B324-3877D861D713_1_105_c.jpeg",
+      "9C65F57D-AF01-496C-A72C-AB7EC72A44E4_1_105_c.jpeg",
+      "20E2DE61-7E65-44C6-95EF-797EE5572627_1_105_c.jpeg",
+      "30C2D241-4300-4AA5-9138-DD67381F74DC_1_105_c.jpeg",
+      "36F0D19F-C3CE-4372-9CBB-C9C2B24BE5AF_1_105_c.jpeg",
+      "39CB027F-CBFD-4D01-A62C-393CEEDE90DC_1_105_c.jpeg",
+      "44EB9F3C-7032-4648-8A7B-EBFA1F04766C_1_105_c.jpeg",
+      "82A8C1D6-E72A-4FFD-93FA-45408BC18CCE_1_105_c.jpeg",
+      "428A39FF-8021-42EA-B333-872B5A00D38A_1_105_c.jpeg",
+      "825F5033-FD82-4C10-A7E1-2F121405B017_1_105_c.jpeg",
+      "3188AD60-0669-40D0-B34F-EE02FB86EEED_1_105_c.jpeg",
+      "84265ED4-869B-4B70-875F-F52E12C3E78E_1_105_c.jpeg",
+      "914043CB-8BAF-411F-845F-D1156F1E6819_1_105_c.jpeg",
+      "A5E77392-FAFE-44AA-8607-9A5BEE2FDEF9_1_105_c.jpeg",
+      "A5F460BB-4A53-4227-A08E-1210DEFC79FC_1_105_c.jpeg",
+      "AC9DD889-19AE-48AC-988D-3DD7080ABFCB_1_105_c.jpeg",
+      "CA981CCD-18F2-4268-9DB1-004CF79A5270_1_105_c.jpeg",
+      "DBBAEAA1-9656-42BC-85AF-1C2A8CDA4D02_1_105_c.jpeg",
+      "DC22D872-F642-4638-97BA-B785AD3ACE66_1_105_c.jpeg",
+      "E1E1E351-091B-4A39-8E20-9696A0197626_1_105_c.jpeg",
+      "E13E452E-436A-4F39-B763-0EF00848CBB8_1_105_c.jpeg",
+      "F4E497CA-0BE4-4F65-BEA9-25EEB4D8002E_1_105_c.jpeg",
+      "F411AF67-A81D-4A3F-92BD-67853DBF1995_1_105_c.jpeg",
+      "FF824C6A-A6D9-4227-8D32-618E63A243FC_1_105_c.jpeg"
+    ];
+
+    const gallery = document.getElementById("gallery");
+    const lightbox = document.getElementById("lightbox");
+    const largePhoto = document.getElementById("largePhoto");
+    const counter = document.getElementById("counter");
+    let currentIndex = 0;
+
+    filenames.forEach((filename, index) => {
+      const path = "images/" + filename;
+      const figure = document.createElement("figure");
+      figure.className = "photo";
+
+      const img = document.createElement("img");
+      img.src = path;
+      img.alt = "Photograph " + (index + 1);
+      img.loading = index < 6 ? "eager" : "lazy";
+      img.decoding = "async";
+
+      const caption = document.createElement("figcaption");
+      caption.textContent = "Photograph " + String(index + 1).padStart(2, "0");
+
+      figure.append(img, caption);
+      figure.addEventListener("click", () => openPhoto(index));
+      gallery.appendChild(figure);
+    });
+
+    function openPhoto(index) {
+      currentIndex = index;
+      largePhoto.src = "images/" + filenames[currentIndex];
+      largePhoto.alt = "Photograph " + (currentIndex + 1);
+      counter.textContent =
+        String(currentIndex + 1).padStart(2, "0") +
+        " / " + String(filenames.length).padStart(2, "0");
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+      document.getElementById("close").focus();
+    }
+
+    function closePhoto() {
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    function movePhoto(direction) {
+      currentIndex =
+        (currentIndex + direction + filenames.length) % filenames.length;
+      openPhoto(currentIndex);
+    }
+
+    document.getElementById("close").addEventListener("click", closePhoto);
+    document.getElementById("previous").addEventListener("click", () => movePhoto(-1));
+    document.getElementById("next").addEventListener("click", () => movePhoto(1));
+
+    lightbox.addEventListener("click", event => {
+      if (event.target === lightbox) closePhoto();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!lightbox.classList.contains("open")) return;
+      if (event.key === "Escape") closePhoto();
+      if (event.key === "ArrowLeft") movePhoto(-1);
+      if (event.key === "ArrowRight") movePhoto(1);
+    });
+  </script>
 </body>
 </html>
