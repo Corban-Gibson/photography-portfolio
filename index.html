@@ -37,11 +37,15 @@
     }
 
     header {
+      position: sticky;
+      top: 0;
+      z-index: 900;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 0;
+      padding: 16px 0;
       border-bottom: 1px solid var(--line);
+      background: var(--background);
     }
 
     .logo {
@@ -359,6 +363,7 @@
     <section class="about" id="about">
       <h2>About Me</h2>
       <div class="about-content">
+        <img class="about-photo" src="about-me-cropped.jpg" alt="Corban standing in front of colorful mountains">
         <div class="about-copy">
           <p>
             Photography is a way of slowing down and noticing the world around me.
@@ -379,7 +384,6 @@
             and collaborations.
           </p>
         </div>
-        <img class="about-photo" src="about-me-cropped.jpg" alt="Corban standing in front of colorful mountains">
       </div>
     </section>
 
