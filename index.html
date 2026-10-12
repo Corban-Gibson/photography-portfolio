@@ -181,7 +181,9 @@
       max-height: 470px;
       aspect-ratio: 4 / 5;
       object-fit: cover;
-      object-position: center;
+      /* Keep Corban's face and upper body in view in the portrait crop. */
+      object-position: center 32%;
+      border-radius: 2px;
     }
 
     .about-copy p + p { margin-top: 18px; }
@@ -306,7 +308,8 @@
       .about-photo {
         width: min(100%, 420px);
         max-height: 420px;
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 4 / 5;
+        object-position: center 30%;
       }
 
       footer {
@@ -357,7 +360,6 @@
     <section class="about" id="about">
       <h2>About Me</h2>
       <div class="about-content">
-        <img class="about-photo" src="about-me.jpg" alt="Corban standing in front of colorful mountains">
         <div class="about-copy">
           <p>
             Photography is a way of slowing down and noticing the world around me.
@@ -378,6 +380,7 @@
             and collaborations.
           </p>
         </div>
+        <img class="about-photo" src="about-me-cropped.jpg" alt="Corban standing in front of colorful mountains">
       </div>
     </section>
 
