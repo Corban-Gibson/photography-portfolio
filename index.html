@@ -168,22 +168,19 @@
       font-size: 16px;
     }
 
-    .about-content {
-      display: grid;
-      grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
-      gap: 36px;
-      align-items: start;
-    }
-
     .about-photo {
       display: block;
       width: 100%;
       max-height: 470px;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      /* Keep Corban's face and upper body in view in the portrait crop. */
-      object-position: center 32%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
       border-radius: 2px;
+      margin-top: 22px;
+    }
+
+    .about-content {
+      display: block;
     }
 
     .about-copy p + p { margin-top: 18px; }
@@ -300,16 +297,9 @@
         margin-top: 60px;
       }
 
-      .about-content {
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-
       .about-photo {
         width: min(100%, 420px);
-        max-height: 420px;
-        aspect-ratio: 4 / 5;
-        object-position: center 30%;
+        max-height: none;
       }
 
       footer {
@@ -358,7 +348,10 @@
     </main>
 
     <section class="about" id="about">
-      <h2>About Me</h2>
+      <div>
+        <h2>About Me</h2>
+        <img class="about-photo" src="about-me-cropped.jpg" alt="Corban standing in front of colorful mountains">
+      </div>
       <div class="about-content">
         <div class="about-copy">
           <p>
@@ -380,7 +373,6 @@
             and collaborations.
           </p>
         </div>
-        <img class="about-photo" src="about-me-cropped.jpg" alt="Corban standing in front of colorful mountains">
       </div>
     </section>
 
