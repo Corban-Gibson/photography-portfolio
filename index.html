@@ -168,6 +168,24 @@
       font-size: 16px;
     }
 
+    .about-content {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+      gap: 36px;
+      align-items: start;
+    }
+
+    .about-photo {
+      display: block;
+      width: 100%;
+      max-height: 470px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .about-copy p + p { margin-top: 18px; }
+
     footer {
       display: flex;
       justify-content: space-between;
@@ -280,6 +298,17 @@
         margin-top: 60px;
       }
 
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .about-photo {
+        width: min(100%, 420px);
+        max-height: 420px;
+        aspect-ratio: 4 / 3;
+      }
+
       footer {
         flex-direction: column;
         gap: 6px;
@@ -327,22 +356,29 @@
 
     <section class="about" id="about">
       <h2>About Me</h2>
-      <p>
-        Photography is a way of slowing down and noticing the world around me.
-        I am currently a junior in college studying business administration
-        with a focus on digital marketing. My interest in both business and
-        creativity has allowed me to explore how photography can tell stories,
-        capture moments, and communicate ideas visually.
-        <br><br>
-        I enjoy finding beauty in everyday places and capturing moments that
-        people might otherwise overlook. I am always looking for new perspectives
-        and opportunities to grow as a photographer.
-        <br><br>
-        This portfolio is a collection of my work and reflects the way I see
-        the world. I hope to continue developing my skills, connecting with others
-        through photography, and exploring opportunities to work on new projects
-        and collaborations.
-      </p>
+      <div class="about-content">
+        <img class="about-photo" src="about-me.jpg" alt="Corban standing in front of colorful mountains">
+        <div class="about-copy">
+          <p>
+            Photography is a way of slowing down and noticing the world around me.
+            I am currently a junior in college studying business administration
+            with a focus on digital marketing. My interest in both business and
+            creativity has allowed me to explore how photography can tell stories,
+            capture moments, and communicate ideas visually.
+          </p>
+          <p>
+            I enjoy finding beauty in everyday places and capturing moments that
+            people might otherwise overlook. I am always looking for new perspectives
+            and opportunities to grow as a photographer.
+          </p>
+          <p>
+            This portfolio is a collection of my work and reflects the way I see
+            the world. I hope to continue developing my skills, connecting with others
+            through photography, and exploring opportunities to work on new projects
+            and collaborations.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section class="about" id="contact">
