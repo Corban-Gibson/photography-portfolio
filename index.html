@@ -3,10 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A photography portfolio featuring landscapes, everyday moments, and fine-art photography by Corban Gibson.">
+  <meta name="description" content="Photography portfolio of Corban Gibson.">
   <title>Corban Gibson | Photography</title>
 
   <style>
+    :root {
+      --background: #f8f7f3;
+      --text: #252521;
+      --muted: #77756f;
+      --line: #dedbd3;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -17,164 +24,183 @@
 
     body {
       margin: 0;
-      background: #faf9f6;
-      color: #242420;
+      background: var(--background);
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1400px, 92%);
+      margin: 0 auto;
     }
 
     header {
-      padding: 36px 6% 26px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #e8e6e0;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
     }
 
     .logo {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 22px;
-      letter-spacing: 1px;
+      font-size: 25px;
     }
 
-    nav a {
-      margin-left: 25px;
-      color: #55554f;
-      text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 1.5px;
+    nav {
+      display: flex;
+      gap: 28px;
+      font-size: 11px;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     nav a:hover {
-      color: #99917e;
+      color: var(--muted);
     }
 
     .intro {
-      padding: 90px 6% 65px;
-      max-width: 1100px;
-      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      padding: 90px 0 75px;
     }
 
     .eyebrow {
-      color: #858174;
+      color: var(--muted);
       font-size: 11px;
       letter-spacing: 3px;
       text-transform: uppercase;
     }
 
-    h1 {
+    h1, h2 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(44px, 7vw, 82px);
       font-weight: normal;
-      line-height: 1.08;
+    }
+
+    h1 {
+      max-width: 600px;
+      margin: 18px 0;
+      font-size: clamp(42px, 5.5vw, 76px);
+      line-height: 1.06;
       letter-spacing: -2px;
-      margin: 22px 0;
     }
 
     .intro p {
-      color: #68675f;
-      max-width: 460px;
-      line-height: 1.8;
+      max-width: 390px;
+      color: var(--muted);
       font-size: 15px;
     }
 
-    .gallery-section {
-      padding: 0 6% 85px;
+    .intro-note {
+      justify-self: end;
+      max-width: 440px;
+      color: var(--muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(18px, 2vw, 25px);
+      font-style: italic;
     }
 
     .gallery-heading {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 30px;
     }
 
-    .gallery-heading h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 26px;
-      font-weight: normal;
+    .gallery-heading h2,
+    .about h2 {
+      margin: 0;
+      font-size: 34px;
     }
 
     .photo-count {
-      color: #858174;
-      font-size: 12px;
-      letter-spacing: 1px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 2px;
     }
 
+    /*
+      Organic staggered layout.
+      Images keep their original proportions.
+      Nothing is cropped or stretched.
+    */
+
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px 18px;
+      columns: 3;
+      column-gap: 18px;
     }
 
     .photo {
-      margin: 0;
-      cursor: pointer;
-      overflow: hidden;
-      background: #eeece6;
+      display: block;
+      width: 100%;
+      margin: 0 0 18px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      break-inside: avoid;
+      cursor: zoom-in;
     }
 
     .photo img {
       display: block;
       width: 100%;
-      height: 320px;
-      object-fit: cover;
-      transition: transform 0.5s ease;
+      height: auto;
+      object-fit: contain;
+      transition: opacity 0.25s ease;
     }
 
     .photo:hover img {
-      transform: scale(1.035);
-    }
-
-    .photo figcaption {
-      padding: 12px 2px 4px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 14px;
-      color: #55554f;
+      opacity: 0.86;
     }
 
     .about {
-      border-top: 1px solid #e8e6e0;
-      padding: 65px 6% 75px;
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 40px;
-    }
-
-    .about h2 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: normal;
-      font-size: 30px;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 50px;
+      margin-top: 100px;
+      padding: 40px 0 60px;
+      border-top: 1px solid var(--line);
     }
 
     .about p {
-      max-width: 550px;
+      max-width: 570px;
       margin: 0;
-      color: #68675f;
-      line-height: 1.9;
-      font-size: 15px;
+      color: var(--muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
     }
 
     footer {
-      padding: 25px 6%;
-      border-top: 1px solid #e8e6e0;
       display: flex;
       justify-content: space-between;
-      gap: 15px;
-      color: #77766e;
-      font-size: 12px;
+      gap: 20px;
+      padding: 22px 0 30px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1px;
     }
+
+    /* Full photo viewer */
 
     .lightbox {
       position: fixed;
       inset: 0;
-      z-index: 10;
+      z-index: 1000;
       display: none;
       align-items: center;
       justify-content: center;
-      background: rgba(20, 20, 18, 0.96);
-      padding: 55px 25px;
+      padding: 60px;
+      background: rgba(18, 18, 17, 0.96);
     }
 
     .lightbox.open {
@@ -182,129 +208,177 @@
     }
 
     .lightbox img {
-      max-width: 90%;
-      max-height: 82vh;
+      display: block;
+      max-width: 100%;
+      max-height: calc(100vh - 120px);
+      width: auto;
+      height: auto;
       object-fit: contain;
     }
 
-    .lightbox button {
+    .lightbox-button {
       position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 0;
       background: transparent;
       color: white;
+      font-size: 34px;
       cursor: pointer;
+    }
+
+    .close-button {
+      top: 18px;
+      right: 25px;
       font-size: 30px;
-      padding: 10px;
     }
 
-    .close {
-      top: 15px;
-      right: 22px;
+    .prev-button {
+      left: 18px;
     }
 
-    .previous {
-      left: 12px;
-      top: 50%;
+    .next-button {
+      right: 18px;
     }
 
-    .next {
-      right: 12px;
-      top: 50%;
-    }
-
-    .lightbox-counter {
+    .photo-number {
       position: absolute;
-      bottom: 18px;
-      color: #ddd;
+      bottom: 20px;
+      color: white;
       font-size: 12px;
       letter-spacing: 2px;
     }
 
-    @media (max-width: 800px) {
+    @media (min-width: 1100px) {
       .gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        columns: 4;
       }
 
-      .photo img {
-        height: 280px;
+      .intro {
+        padding-top: 100px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        width: 90%;
+      }
+
+      header {
+        align-items: flex-start;
+        gap: 18px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      nav {
+        gap: 12px;
+        padding-top: 7px;
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 55px 0;
+      }
+
+      h1 {
+        font-size: clamp(42px, 11vw, 64px);
+      }
+
+      .intro-note {
+        justify-self: start;
+        margin-top: 10px;
+      }
+
+      .gallery {
+        columns: 2;
+        column-gap: 10px;
+      }
+
+      .photo {
+        margin-bottom: 10px;
+      }
+
+      .gallery-heading h2,
+      .about h2 {
+        font-size: 28px;
       }
 
       .about {
         grid-template-columns: 1fr;
-        gap: 20px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      header {
-        padding: 24px 5%;
-        align-items: flex-start;
-        gap: 15px;
-      }
-
-      .logo {
-        font-size: 18px;
-      }
-
-      nav a {
-        margin-left: 10px;
-        font-size: 10px;
-      }
-
-      .intro {
-        padding: 65px 5% 45px;
-      }
-
-      .gallery-section {
-        padding: 0 5% 55px;
-      }
-
-      .gallery {
-        gap: 20px 12px;
-      }
-
-      .photo img {
-        height: 210px;
-      }
-
-      .photo figcaption {
-        font-size: 12px;
+        gap: 18px;
+        margin-top: 60px;
       }
 
       footer {
         flex-direction: column;
+        gap: 6px;
+      }
+
+      .lightbox {
+        padding: 45px 35px;
+      }
+
+      .lightbox img {
+        max-height: calc(100vh - 100px);
+      }
+
+      .prev-button {
+        left: 3px;
+      }
+
+      .next-button {
+        right: 3px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .gallery {
+        columns: 1;
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="logo">Corban Gibson</div>
-    <nav>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-    </nav>
-  </header>
+  <div class="page">
+    <header>
+      <a class="logo" href="#">Corban Gibson</a>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
 
-  <main>
     <section class="intro">
-      <div class="eyebrow">Photography Portfolio</div>
-      <h1>Finding beauty<br>in the everyday.</h1>
-      <p>
-        A collection of photographs exploring places, people,
-        light, and the little moments worth remembering.
-      </p>
+      <div>
+        <div class="eyebrow">Photography Portfolio</div>
+        <h1>Finding beauty in the everyday.</h1>
+        <p>
+          A collection of photographs exploring places, people,
+          light, and the little moments worth remembering.
+        </p>
+      </div>
+
+      <div class="intro-note">
+        More than just pictures — moments.
+      </div>
     </section>
 
-    <section class="gallery-section" id="work">
+    <main id="work">
       <div class="gallery-heading">
         <h2>Selected Work</h2>
         <span class="photo-count">36 PHOTOGRAPHS</span>
       </div>
 
       <div class="gallery" id="gallery"></div>
-    </section>
+    </main>
 
     <section class="about" id="about">
       <h2>About My Work</h2>
@@ -316,23 +390,36 @@
         I see the world.
       </p>
     </section>
-  </main>
 
-  <footer>
-    <span>© 2026 Corban Gibson</span>
-    <span>Photography Portfolio</span>
-  </footer>
+    <footer>
+      <span>© 2026 Corban Gibson</span>
+      <span>PHOTOGRAPHY PORTFOLIO</span>
+    </footer>
+  </div>
 
-  <div class="lightbox" id="lightbox" role="dialog"
-       aria-label="Photo viewer" aria-modal="true">
-    <button class="close" id="close" aria-label="Close photo">&times;</button>
-    <button class="previous" id="previous" aria-label="Previous photo">&#10094;</button>
-    <img id="largePhoto" src="" alt="Expanded photograph">
-    <button class="next" id="next" aria-label="Next photo">&#10095;</button>
-    <div class="lightbox-counter" id="counter"></div>
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Photo viewer"
+  >
+    <button class="lightbox-button close-button"
+      id="closeButton" aria-label="Close photo">×</button>
+    <button class="lightbox-button prev-button"
+      id="prevButton" aria-label="Previous photo">‹</button>
+    <img id="lightboxImage" src="" alt="">
+    <button class="lightbox-button next-button"
+      id="nextButton" aria-label="Next photo">›</button>
+    <div class="photo-number" id="photoNumber"></div>
   </div>
 
   <script>
+    /*
+      These photos are expected to be in the MAIN repository folder,
+      beside index.html. The filenames must match exactly.
+    */
+
     const filenames = [
       "0CF86748-FE41-48B7-9B47-F11CC80AC06D_1_105_c.jpeg",
       "0E0EC77A-C7FC-400D-9C27-1929E297D09B_1_105_c.jpeg",
@@ -357,7 +444,7 @@
       "428A39FF-8021-42EA-B333-872B5A00D38A_1_105_c.jpeg",
       "825F5033-FD82-4C10-A7E1-2F121405B017_1_105_c.jpeg",
       "3188AD60-0669-40D0-B34F-EE02FB86EEED_1_105_c.jpeg",
-      "84265ED4-869B-4B70-875F-F52E12C3E78E_1_105_c.jpeg",
+      "84265ED4-E869-4B70-875F-F52E12C3E78E_1_105_c.jpeg",
       "914043CB-8BAF-411F-845F-D1156F1E6819_1_105_c.jpeg",
       "A5E77392-FAFE-44AA-8607-9A5BEE2FDEF9_1_105_c.jpeg",
       "A5F460BB-4A53-4227-A08E-1210DEFC79FC_1_105_c.jpeg",
@@ -374,39 +461,48 @@
 
     const gallery = document.getElementById("gallery");
     const lightbox = document.getElementById("lightbox");
-    const largePhoto = document.getElementById("largePhoto");
-    const counter = document.getElementById("counter");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const photoNumber = document.getElementById("photoNumber");
+
     let currentIndex = 0;
 
+    // Use the filename directly; no "images/" prefix.
     filenames.forEach((filename, index) => {
-      const path = "images/" + filename;
-      const figure = document.createElement("figure");
-      figure.className = "photo";
+      const button = document.createElement("button");
+      button.className = "photo";
+      button.type = "button";
+      button.setAttribute("aria-label", `Open photograph ${index + 1}`);
 
       const img = document.createElement("img");
-      img.src = path;
-      img.alt = "Photograph " + (index + 1);
-      img.loading = index < 6 ? "eager" : "lazy";
+      img.src = filename;
+      img.alt = `Photograph ${index + 1} by Corban Gibson`;
+      img.loading = index < 8 ? "eager" : "lazy";
       img.decoding = "async";
 
-      const caption = document.createElement("figcaption");
-      caption.textContent = "Photograph " + String(index + 1).padStart(2, "0");
+      img.addEventListener("error", () => {
+        button.hidden = true;
+        console.error("Could not load image:", filename);
+      });
 
-      figure.append(img, caption);
-      figure.addEventListener("click", () => openPhoto(index));
-      gallery.appendChild(figure);
+      button.appendChild(img);
+      button.addEventListener("click", () => openPhoto(index));
+      gallery.appendChild(button);
     });
 
     function openPhoto(index) {
       currentIndex = index;
-      largePhoto.src = "images/" + filenames[currentIndex];
-      largePhoto.alt = "Photograph " + (currentIndex + 1);
-      counter.textContent =
-        String(currentIndex + 1).padStart(2, "0") +
-        " / " + String(filenames.length).padStart(2, "0");
+      updatePhoto();
       lightbox.classList.add("open");
       document.body.style.overflow = "hidden";
-      document.getElementById("close").focus();
+      document.getElementById("closeButton").focus();
+    }
+
+    function updatePhoto() {
+      lightboxImage.src = filenames[currentIndex];
+      lightboxImage.alt =
+        `Photograph ${currentIndex + 1} by Corban Gibson`;
+      photoNumber.textContent =
+        `${currentIndex + 1} / ${filenames.length}`;
     }
 
     function closePhoto() {
@@ -414,15 +510,23 @@
       document.body.style.overflow = "";
     }
 
-    function movePhoto(direction) {
-      currentIndex =
-        (currentIndex + direction + filenames.length) % filenames.length;
-      openPhoto(currentIndex);
+    function nextPhoto() {
+      currentIndex = (currentIndex + 1) % filenames.length;
+      updatePhoto();
     }
 
-    document.getElementById("close").addEventListener("click", closePhoto);
-    document.getElementById("previous").addEventListener("click", () => movePhoto(-1));
-    document.getElementById("next").addEventListener("click", () => movePhoto(1));
+    function previousPhoto() {
+      currentIndex =
+        (currentIndex - 1 + filenames.length) % filenames.length;
+      updatePhoto();
+    }
+
+    document.getElementById("closeButton")
+      .addEventListener("click", closePhoto);
+    document.getElementById("nextButton")
+      .addEventListener("click", nextPhoto);
+    document.getElementById("prevButton")
+      .addEventListener("click", previousPhoto);
 
     lightbox.addEventListener("click", event => {
       if (event.target === lightbox) closePhoto();
@@ -430,9 +534,10 @@
 
     document.addEventListener("keydown", event => {
       if (!lightbox.classList.contains("open")) return;
+
       if (event.key === "Escape") closePhoto();
-      if (event.key === "ArrowLeft") movePhoto(-1);
-      if (event.key === "ArrowRight") movePhoto(1);
+      if (event.key === "ArrowRight") nextPhoto();
+      if (event.key === "ArrowLeft") previousPhoto();
     });
   </script>
 </body>
