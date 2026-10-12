@@ -367,6 +367,14 @@
   </div>
 
   <script>
+    // Always start at the top when the portfolio is opened or refreshed.
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    window.addEventListener("pageshow", () => {
+      if (window.location.hash) {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+      window.scrollTo(0, 0);
+    });
     /*
       These 35 photo files should be beside index.html in the main
       repository folder. Each filename must match the uploaded file exactly.
